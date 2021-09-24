@@ -1,39 +1,88 @@
-const url = "https://striveschool-api.herokuapp.com/api/movies/action"
+const urlA = "https://striveschool-api.herokuapp.com/api/movies/action"
+const urlH = "https://striveschool-api.herokuapp.com/api/movies/horror"
+const urlF = "https://striveschool-api.herokuapp.com/api/movies/fantasy"
 
-const action = () => {
+const action = async () => {
+
     let title = document.querySelector(".title")
     title.innerText = "Action"
-    fetchData()
+    let data =  await fetchData(urlA)
+    console.log(data)
+
     let container = document.querySelector("#row-master")
-    container.innerHTML = `
+    container.innerHTML = ""
+
+
+    data.forEach(element => {
+        container.innerHTML += `
         <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1 my-1">
             <div class="card col-size-style">
             
             <img
-                src=""
+                src="${element.imageUrl}"
                 class="card-img-top img-netflix-movies img-fluid w-100 rounded"
             />
             </div>
-            <h4 style="color: white; text-align: center;"></h4>
+            <a href="./backoffice.html?id=${element._id}"><h5 style="color: white; text-align: center;">${element.name}</h5></a>
         </div>
         `
+    });
 }
 
 
-const horror = () => {
+const horror = async () => {
+
     let title = document.querySelector(".title")
     title.innerText = "Horror"
-    fetchData()
+    
+    let data =  await fetchData(urlH)
+    console.log(data)
+    let container = document.querySelector("#row-master")
+    container.innerHTML = ""
+    data.forEach(element => {
+        container.innerHTML += `
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1 my-1">
+            <div class="card col-size-style">
+            
+            <img
+                src="${element.imageUrl}"
+                class="card-img-top img-netflix-movies img-fluid w-100 rounded"
+            />
+            </div>
+            <a href="./backoffice.html?id=${element._id}"><h5 style="color: white; text-align: center;">${element.name}</h5></a>
+        </div>
+        `
+    });
 }
 
 
-const fantasy = () => {
+const fantasy = async () => {
+
     let title = document.querySelector(".title")
     title.innerText = "Fantasy"
-    fetchData()
+
+    
+    let data =  await fetchData(urlF)
+    console.log(data)
+    let container = document.querySelector("#row-master")
+    container.innerHTML = ""
+    data.forEach(element => {
+        container.innerHTML += `
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1 my-1">
+            <div class="card col-size-style">
+            
+            <img
+                src="${element.imageUrl}"
+                class="card-img-top img-netflix-movies img-fluid w-100 rounded"
+            />
+            </div>
+            <a href="./backoffice.html?id=${element._id}"><h5 style="color: white; text-align: center;">${element.name}</h5></a>
+        </div>
+        `
+    });
 }
 
-const fetchData = async () => {
+const fetchData = async (url) => {
     try {
         const response = await fetch(url , { 
             headers: {
