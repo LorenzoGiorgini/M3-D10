@@ -88,7 +88,6 @@ body {
 
 .dropdown-toggle::after {
     display: inline-block;
-    margin-left: 25px;
     vertical-align: .255em;
     content: "";
     border-top: .3em solid;
@@ -189,4 +188,15 @@ body {
 
 .toUpper {
     text-transform: capitalize;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    width: 45px;
+    overflow: hidden;
+}
+
+
+.genres-button {
+    display: flex;
+    align-items: center;
 }
