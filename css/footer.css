@@ -1,0 +1,38 @@
+.social-links {
+
+    color: grey
+}
+
+.socials {
+
+    margin-top: 30px;
+    padding-left: 10px;
+}
+
+.icons {
+    width: 36px;
+    height: 25px;
+}
+
+.social-box {
+
+    margin-right: 15px;
+    margin-bottom: 1em;
+    width: 36px;
+    height: 27px;
+}
+
+.social-links:hover {
+    color: grey;
+}
+
+.text-underline:hover {
+
+    color:grey;
+    border-bottom: 1px solid grey;
+}
+
+a {
+
+    color: grey;
+}
