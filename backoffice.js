@@ -15,6 +15,34 @@ if (movieId) {
     button.innerText = "Submit"
 }
 
+window.onload = async () => {
+    if (movieId) {
+        console.log(url)
+      const resp = await fetch(url , {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiMWNlNjRiYjUzZDAwMTViMTllY2UiLCJpYXQiOjE2MzIzMTI1NTAsImV4cCI6MTYzMzUyMjE1MH0.2jt7nrvY6lDD2JNvyGbxJLIR8WemIGQXws4PHMeNqQI",
+        },
+      });
+
+      const response = await resp.json()
+      console.log(response)
+
+      //Deconstructing
+      const { name , description , category , imageUrl } = response
+
+      //Pre filler
+      document.querySelector("#title").value = name
+
+      document.querySelector("#description").value = description
+
+      document.querySelector("#category").value = category
+
+      document.querySelector("#image").value = imageUrl
+    }
+};
+
 const handleForm = (event) => {
 
     let obj = {
@@ -34,7 +62,7 @@ const handleDelete = async () => {
     let confirmationDel = confirm("Do you want to delete?")
     if(confirmationDel) {
         try {
-        const resp = await fetch(endpointUrl, {
+        const resp = await fetch(url, {
             method: "DELETE",
             headers: {
             Authorization:
@@ -44,11 +72,11 @@ const handleDelete = async () => {
 
         if(resp.ok) {
             let deletedProduct = await resp.json()
-            displayAlert("danger" , "Product : " + deletedProduct.name + " deleted succesfully")
+            alert("danger" , "Product : " + deletedProduct.name + " deleted succesfully")
         }
 
         } catch (error) {
-        displayAlert("danger" , error)
+            alert(error)
         }
     }
 };
@@ -66,8 +94,10 @@ const postedData = async (obj) => {
         },
         }
         );
-        let response = await resp.json()
-        console.log(response)
+        if (resp.ok) {
+            let response = await resp.json()
+            alert("everything went good")
+        }
     } catch (error) {
         console.error(error)
     }
