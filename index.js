@@ -6,7 +6,7 @@ const showCaseMovies = async (genreName) => {
     let data =  await fetchData(baseUrl)
     console.log(data)
 
-    let container = document.querySelector("#row-master")
+    let container = document.querySelector("#master-row")
     container.innerHTML = ""
 
 
@@ -73,7 +73,7 @@ const dropdownGenre = (data) => {
     let aGenre
     data.forEach(elem => {
         aGenre = document.createElement("a")
-        aGenre.innerHTML = `<a class="dropdown-item" onclick="showCaseMovies('${elem}')">${elem}</a>`
+        aGenre.innerHTML = `<a class="dropdown-item uppercased" onclick="showCaseMovies('${elem}')">${elem}</a>`
         dropdown.appendChild(aGenre)
     })
 }

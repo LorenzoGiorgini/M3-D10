@@ -181,9 +181,7 @@ body {
 }
 
 .img-netflix-movies {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+    height: 175px;
 }
 
 .toUpper {
@@ -191,7 +189,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 0;
-    width: 45px;
+    width: 70px;
     overflow: hidden;
 }
 
@@ -199,4 +197,17 @@ body {
 .genres-button {
     display: flex;
     align-items: center;
+}
+
+.title {
+    margin: 0;
+}
+
+#recent {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.uppercased {
+    text-transform: capitalize;
 }
