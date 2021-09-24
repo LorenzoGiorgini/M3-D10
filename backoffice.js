@@ -72,7 +72,7 @@ const handleDelete = async () => {
 
         if(resp.ok) {
             let deletedProduct = await resp.json()
-            alert("danger" , "Product : " + deletedProduct.name + " deleted succesfully")
+            window.location.assign("./index.html")
         }
 
         } catch (error) {
